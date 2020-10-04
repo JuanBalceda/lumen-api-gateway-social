@@ -2,9 +2,9 @@
 
 return [
     'authors' => [
-        'baseUrl' => env('AUTHORS_SERVICE_BASE_URL')
+        'baseUri' => env('AUTHORS_SERVICE_BASE_URI')
     ],
     'books' => [
-        'baseUrl' => env('BOOKS_SERVICE_BASE_URL')
+        'baseUri' => env('BOOKS_SERVICE_BASE_URI')
     ]
 ];

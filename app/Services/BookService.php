@@ -11,13 +11,13 @@ class BookService
     use ConsumeExternalService;
 
     /**
-     * The base url to be used to consume the books service
+     * The base uri to be used to consume the books service
      * @var string
      */
-    public $baseUrl;
+    public $baseUri;
 
     public function __construct()
     {
-        $this->baseUrl = config('services.books.baseUrl');
+        $this->baseUri = config('services.books.baseUri');
     }
 }
