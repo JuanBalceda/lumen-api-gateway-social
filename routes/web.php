@@ -22,7 +22,6 @@ $router->group(['middleware' => 'client.credentials'], function () use ($router)
     /**
      * Authors routes
      */
-
     $router->get('/authors', 'AuthorController@index');
     $router->post('/authors', 'AuthorController@store');
     $router->get('/authors/{idAuthor}', 'AuthorController@show');
@@ -30,16 +29,24 @@ $router->group(['middleware' => 'client.credentials'], function () use ($router)
     $router->patch('/authors/{idAuthor}', 'AuthorController@update');
     $router->delete('/authors/{idAuthor}', 'AuthorController@destroy');
 
-
     /**
      * Books routes
      */
-
     $router->get('/books', 'BookController@index');
     $router->post('/books', 'BookController@store');
     $router->get('/books/{idBook}', 'BookController@show');
     $router->put('/books/{idBook}', 'BookController@update');
     $router->patch('/books/{idBook}', 'BookController@update');
     $router->delete('/books/{idBook}', 'BookController@destroy');
+
+    /**
+     * Users routes
+     */
+    $router->get('/users', 'UserController@index');
+    $router->post('/users', 'UserController@store');
+    $router->get('/users/{idBook}', 'UserController@show');
+    $router->put('/users/{idBook}', 'UserController@update');
+    $router->patch('/users/{idBook}', 'UserController@update');
+    $router->delete('/users/{idBook}', 'UserController@destroy');
 });
 
