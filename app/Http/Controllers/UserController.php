@@ -120,4 +120,15 @@ class UserController extends Controller
 
         return $this->validResponse($user);
     }
+
+    /**
+     * Identifies the current user
+     * @param int $idUser
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function me(Request $request)
+    {
+        return $this->validResponse($request->user());
+    }
 }
