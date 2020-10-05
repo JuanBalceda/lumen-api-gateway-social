@@ -10,7 +10,7 @@ trait ConsumeExternalService
     public function performRequest($method, $endpoint, $formParams = [], $headers = [])
     {
         $client = new Client([
-            'base_uri' => $this->baseUri
+            'base_uri' => $this->base_uri
         ]);
 
         if (isset($this->secret)) {

@@ -14,7 +14,7 @@ class BookService
      * The base uri to be used to consume the books service
      * @var string
      */
-    public $baseUri;
+    public $base_uri;
 
     /**
      * The secret to be used to consume the books service
@@ -24,7 +24,7 @@ class BookService
 
     public function __construct()
     {
-        $this->baseUri = config('services.books.baseUri');
+        $this->base_uri = config('services.books.base_uri');
         $this->secret = config('services.books.secret');
     }
 

@@ -17,6 +17,11 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->group(['middleware' => 'auth:api'], function () use ($router) {
+    $router->get('/users/me', 'UserController@me');
+
+});
+
 $router->group(['middleware' => 'client.credentials'], function () use ($router) {
 
     /**
@@ -50,7 +55,8 @@ $router->group(['middleware' => 'client.credentials'], function () use ($router)
     $router->delete('/users/{idBook}', 'UserController@destroy');
 });
 
-$router->group(['middleware' => 'auth:api'], function () use ($router) {
-    $router->get('/users/me', 'UserController@me');
-
-});
+/**
+ * Social authentication
+ */
+$router->get('/auth/{provider}', 'SocialAuthController@redirectToProvider');
+$router->get('/auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
