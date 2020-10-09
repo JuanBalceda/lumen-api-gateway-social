@@ -56,7 +56,13 @@ $router->group(['middleware' => 'client.credentials'], function () use ($router)
 });
 
 /**
- * Social authentication
+ * Socialite authentication
  */
 $router->get('/auth/{provider}', 'SocialAuthController@redirectToProvider');
 $router->get('/auth/{provider}/callback', 'SocialAuthController@handleProviderCallback');
+
+/**
+ * OAuth authentication
+ */
+$router->get('/oauth/facebook', 'FacebookOAuthController@redirectToProvider');
+$router->get('/oauth/facebook/callback', 'FacebookOAuthController@handleProviderCallback');

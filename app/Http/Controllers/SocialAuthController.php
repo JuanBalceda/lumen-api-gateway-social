@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Services\OAuthTokenService;
 use App\Traits\ApiResponse;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
-use phpseclib\Crypt\Random;
 
 class SocialAuthController extends Controller
 {
-
     use ApiResponse;
 
-    public function __construct()
+    public $oAuthTokenService;
+
+    public function __construct(OAuthTokenService $oAuthTokenService)
     {
+        $this->oAuthTokenService = $oAuthTokenService;
     }
 
     public function redirectToProvider($provider)
@@ -25,34 +24,9 @@ class SocialAuthController extends Controller
 
     public function handleProviderCallback($provider)
     {
-        $social_user = Socialite::driver($provider)->stateless()->user();
+        $user_data = Socialite::driver($provider)->stateless()->user();
 
-        if ($user = User::where('email', $social_user->email)->first()) {
-
-            $oauth_access_token = $user->tokens()
-                ->where('name', $provider)
-                ->whereDate('expires_at', '>', Carbon::now())
-                ->first();
-
-            if (isset($oauth_access_token)) {
-                $access_token = $oauth_access_token->id;
-            } else {
-                $access_token = $user->createToken($provider)->accessToken;
-            }
-
-            return $this->generateAccessToken($access_token, $user);
-        } else {
-
-            $user = User::create([
-                'name' => $social_user->name,
-                'email' => $social_user->email,
-                'password' => Hash::make(Random::string(32))
-            ]);
-
-            $access_token = $user->createToken($provider)->accessToken;
-
-            return $this->generateAccessToken($access_token, $user);
-        }
+        return $this->oAuthTokenService->getUserAccessToken('facebook', $user_data);
     }
 
     public function generateAccessToken($access_token, $user)
