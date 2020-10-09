@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Services\OAuthTokenService;
-use App\Traits\ApiResponse;
 use App\Traits\ConsumeExternalService;
 use Illuminate\Http\Request;
 
 class FacebookOAuthController extends Controller
 {
-    use ApiResponse;
+
     use ConsumeExternalService;
 
     private $base_uri;

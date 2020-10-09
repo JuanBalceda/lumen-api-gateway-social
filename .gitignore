@@ -8,3 +8,4 @@ Homestead.yaml
 *.sqlite
 storage/*.key
 .rnd
+client_secret.json

@@ -66,3 +66,5 @@ $router->get('/auth/{provider}/callback', 'SocialAuthController@handleProviderCa
  */
 $router->get('/oauth/facebook', 'FacebookOAuthController@redirectToProvider');
 $router->get('/oauth/facebook/callback', 'FacebookOAuthController@handleProviderCallback');
+$router->get('/oauth/google', 'GoogleOAuthController@redirectToProvider');
+$router->get('/oauth/google/callback', 'GoogleOAuthController@handleProviderCallback');
