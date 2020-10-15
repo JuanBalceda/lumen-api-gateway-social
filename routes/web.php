@@ -14,7 +14,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return view('index');  //$router->app->version();
 });
 
 $router->group(['middleware' => 'auth:api'], function () use ($router) {
@@ -23,26 +23,6 @@ $router->group(['middleware' => 'auth:api'], function () use ($router) {
 });
 
 $router->group(['middleware' => 'client.credentials'], function () use ($router) {
-
-    /**
-     * Authors routes
-     */
-    $router->get('/authors', 'AuthorController@index');
-    $router->post('/authors', 'AuthorController@store');
-    $router->get('/authors/{idAuthor}', 'AuthorController@show');
-    $router->put('/authors/{idAuthor}', 'AuthorController@update');
-    $router->patch('/authors/{idAuthor}', 'AuthorController@update');
-    $router->delete('/authors/{idAuthor}', 'AuthorController@destroy');
-
-    /**
-     * Books routes
-     */
-    $router->get('/books', 'BookController@index');
-    $router->post('/books', 'BookController@store');
-    $router->get('/books/{idBook}', 'BookController@show');
-    $router->put('/books/{idBook}', 'BookController@update');
-    $router->patch('/books/{idBook}', 'BookController@update');
-    $router->delete('/books/{idBook}', 'BookController@destroy');
 
     /**
      * Users routes

@@ -12,7 +12,6 @@ class FacebookOAuthController extends Controller
     use ConsumeExternalService;
 
     private $base_uri;
-
     private $app_id;
     private $secret;
     private $redirect_uri;
@@ -27,7 +26,8 @@ class FacebookOAuthController extends Controller
         $this->app_id = config('services.facebook.client_id');
         $this->secret = config('services.facebook.client_secret');
         $this->redirect_uri = config('services.facebook.redirect');
-        $this->state_param = "{app_state=bookstore}"; // For testing purposes
+
+        $this->state_param = "{app_state=store}"; // For testing purposes
 
         $this->oAuthTokenService = $oAuthTokenService;
     }

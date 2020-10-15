@@ -13,9 +13,7 @@ class GoogleOAuthController extends Controller
     use ConsumeExternalService;
 
     private $client;
-
     private $base_uri;
-
     private $redirect_uri;
     private $state_params;
 
@@ -28,7 +26,7 @@ class GoogleOAuthController extends Controller
         $this->base_uri = 'https://www.googleapis.com/oauth2/v3';
 
         $this->redirect_uri = config('services.google.redirect');
-        $this->state_params = "{app_state=bookstore}"; // For testing purposes
+        $this->state_params = "{app_state=store}"; // For testing purposes
 
         $this->initGoogleClient();
     }

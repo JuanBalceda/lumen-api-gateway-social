@@ -64,7 +64,7 @@ class UserController extends Controller
      * @param int $idUser
      * @return JsonResponse
      */
-    public function show($idUser)
+    public function show(int $idUser)
     {
 
         $user = User::findOrFail($idUser);
@@ -79,7 +79,7 @@ class UserController extends Controller
      * @return JsonResponse
      * @throws ValidationException
      */
-    public function update(Request $request, $idUser)
+    public function update(Request $request, int $idUser)
     {
         $rules = [
             'name' => 'max:255',
@@ -112,7 +112,7 @@ class UserController extends Controller
      * @return JsonResponse
      * @throws Exception
      */
-    public function destroy($idUser)
+    public function destroy(int $idUser)
     {
         $user = User::findOrFail($idUser);
 
