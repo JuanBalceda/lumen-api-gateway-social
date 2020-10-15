@@ -14,7 +14,7 @@
 */
 
 $router->get('/', function () use ($router) {
-    return view('index');  //$router->app->version();
+    return view('index');
 });
 
 $router->group(['middleware' => 'auth:api'], function () use ($router) {
