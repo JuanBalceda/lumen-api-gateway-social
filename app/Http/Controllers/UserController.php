@@ -123,9 +123,8 @@ class UserController extends Controller
 
     /**
      * Identifies the current user
-     * @param int $idUser
+     * @param Request $request
      * @return JsonResponse
-     * @throws Exception
      */
     public function me(Request $request)
     {
