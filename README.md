@@ -30,7 +30,7 @@ This api gateway allows you to login with facebook and google
 This project uses [lumen-password](https://github.com/dusterio/lumen-passport "Lumen Password repository")
 
 1. Rename the [.env.example](.env.example) file to **.env** and setup databse, facebook app and google configuration.
-2. Add and APP_KEY to your **.env** file
+2. Add an APP_KEY to your **.env** file
 3. Copy your Google **client_secret.json** to the project base directory.
 4. Install all dependencies, run:
 ```shell script
