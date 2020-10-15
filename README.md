@@ -22,3 +22,29 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Getting started
+
+This api gateway allows you to login with facebook and google
+
+This project uses [lumen-password](https://github.com/dusterio/lumen-passport "Lumen Password repository")
+
+1. Rename the [.env.example](.env.example) file to **.env** and setup databse, facebook app and google configuration.
+2. Add and APP_KEY to your **.env** file
+3. Copy your Google **client_secret.json** to the project base directory.
+4. Install all dependencies, run:
+```shell script
+composer install
+```
+3. Setup your database:
+```shell script
+# Create new tables users and Passport
+php artisan migrate
+
+# Install encryption keys and other necessary stuff for Passport
+php artisan passport:install
+```
+4. Test your app:
+```shell script
+php -S localhost:8002 -t public/
+```
